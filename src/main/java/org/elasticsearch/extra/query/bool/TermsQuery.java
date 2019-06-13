@@ -43,8 +43,7 @@ public class TermsQuery implements BoolQueryAttribute<Object> {
       }
       boolQueryBuilder.must(QueryBuilders.termsQuery(context.completeField(), collect)).boost(context.boost());
     } else {
-      log.info("not support type '{}'", value.getClass());
-      return false;
+      boolQueryBuilder.must(QueryBuilders.termsQuery(context.completeField(), value)).boost(context.boost());
     }
     return true;
   }

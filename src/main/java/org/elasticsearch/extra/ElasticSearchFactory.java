@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class ElasticSearchRequestFactory {
+public class ElasticSearchFactory {
 
   private Map<Class<?>, SearchRequestProvider<?>> searchRequestProviders = new ConcurrentHashMap<>();
   private ConcurrentMap<Class<?>, IndexRequestProvider<?>> indexRequestProviders = new ConcurrentHashMap<>();
