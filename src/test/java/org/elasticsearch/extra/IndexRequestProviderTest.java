@@ -1,24 +1,16 @@
 package org.elasticsearch.extra;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.fasterxml.jackson.databind.util.Converter;
 import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.common.Strings;
 import org.elasticsearch.common.bytes.BytesReference;
-import org.elasticsearch.extra.context.annotation.Document;
-import org.elasticsearch.extra.context.annotation.Routing;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.*;
-
-import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class IndexRequestProviderTest {
 
@@ -41,8 +33,6 @@ public class IndexRequestProviderTest {
   }
 
   public static final class PModel {
-    @JsonSerialize(converter = JsonConverterTest.PinyinCounter.class)
-    @JsonDeserialize(converter = JsonConverterTest.DePinyinCounter.class)
     private String value;
     private Integer value2;
     private IModel model;
