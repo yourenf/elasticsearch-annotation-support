@@ -3,10 +3,15 @@ package org.elasticsearch.extra.query.plugin.converter;
 import org.elasticsearch.extra.query.plugin.converter.std.IntLikeConverter;
 import org.elasticsearch.extra.query.plugin.converter.std.NumberConverter;
 import org.elasticsearch.extra.query.plugin.converter.std.StringTrimToNullConverter;
+import org.elasticsearch.extra.query.plugin.converter.std.ToStringConverter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class BasicConverterFactory {
@@ -21,6 +26,8 @@ public abstract class BasicConverterFactory {
     concrete.put(Byte.TYPE.getName(), IntLikeConverter.INSTANCE);
     concrete.put(BigInteger.class.getName(), NumberConverter.INSTANCE);
     concrete.put(BigDecimal.class.getName(), NumberConverter.INSTANCE);
+    concrete.put(LocalDateTime.class.getName(), ToStringConverter.INSTANCE);
+    concrete.put(LocalDate.class.getName(), ToStringConverter.INSTANCE);
 
     concreteFactory = new ConcurrentHashMap<>();
   }
