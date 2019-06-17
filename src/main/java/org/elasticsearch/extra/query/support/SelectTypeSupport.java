@@ -27,7 +27,7 @@ public class SelectTypeSupport implements AnnotationSupport {
   @Override
   public void initialize(Property property, BoolQueryAttributeContext context) {
     this.property = property;
-    this.converter = context.getFactory().findConverter(property.getType());
+    this.converter = context.getBeanConverterFactory().findConverter(property.getType());
     SelectType type = property.getAnnotation(SelectType.class);
     SelectType.List list = property.getAnnotation(SelectType.List.class);
     if (type == null && list == null) {

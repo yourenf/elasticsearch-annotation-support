@@ -7,6 +7,7 @@ import org.elasticsearch.extra.query.attribute.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class SearchRequestConfig {
@@ -26,6 +27,10 @@ public class SearchRequestConfig {
 
   public void setBoolQueryAttributeContext(BoolQueryAttributeContext context) {
     this.boolQueryAttributeContext = context;
+  }
+
+  public void setBoolQueryAttributeContextSupplier(Supplier<BoolQueryAttributeContext> context) {
+    this.boolQueryAttributeContext = context.get();
   }
 
   public void addSearchRequestAttribute(Class<? extends SearchRequestAttribute> attribute) {

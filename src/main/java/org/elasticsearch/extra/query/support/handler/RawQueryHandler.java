@@ -38,6 +38,9 @@ public class RawQueryHandler extends AbstractQueryHandler {
       return false;
     }
     Object handlerValue = converter.apply(v);
+    if (Objects.isNull(handlerValue)) {
+      return false;
+    }
     return attribute.accept(boolQueryBuilder, context, handlerValue);
   }
 }

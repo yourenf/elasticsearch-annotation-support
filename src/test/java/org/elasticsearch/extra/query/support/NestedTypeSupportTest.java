@@ -39,6 +39,20 @@ public class NestedTypeSupportTest {
     }
   }
 
+  @Test
+  public void forNull() {
+    NestedTypeSupport support = new NestedTypeSupport();
+    BoolQueryBuilder builder = new BoolQueryBuilder();
+    NestedModel model = new NestedModel(null);
+    List<Property> properties = ObjectResolver.INSTANCE.getProperties(NestedModel.class);
+    for (Property property : properties) {
+      support.initialize(property, new BoolQueryAttributeContextImpl());
+      BoolQueryHandler handler = support.get().get();
+      boolean flag = handler.test(builder, model);
+      Assert.assertFalse(flag);
+    }
+  }
+
   public static class NestedModel {
     @NestedType(path = "inner")
     private Inner inner;

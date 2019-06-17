@@ -39,6 +39,21 @@ public class QueryTypeSupportTest {
     Assert.assertEquals(termsQueryBuilder, must.get(1));
   }
 
+  @Test
+  public void forNull() {
+    QueryTypeSupport support = new QueryTypeSupport();
+    BoolQueryAttributeContextImpl context = new BoolQueryAttributeContextImpl();
+    BoolQueryBuilder builder = new BoolQueryBuilder();
+    ObjectModel model = new ObjectModel(null, null);
+    List<Property> properties = ObjectResolver.INSTANCE.getProperties(ObjectModel.class);
+    for (Property property : properties) {
+      support.initialize(property, context);
+      BoolQueryHandler handler = support.get().get();
+      boolean flag = handler.test(builder, model);
+      Assert.assertFalse(flag);
+    }
+  }
+
   public static class ObjectModel {
     @QueryType(field = "valid_data", attribute = RangeAttribute.class)
     private Range range;

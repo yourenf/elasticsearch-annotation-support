@@ -37,11 +37,17 @@ public class SelectTypeSupportTest {
   }
 
   @Test
-  public void setPath() {
-  }
-
-  @Test
-  public void get() {
+  public void forNull() {
+    SelectTypeSupport support = new SelectTypeSupport();
+    BoolQueryBuilder builder = new BoolQueryBuilder();
+    StringModel model = new StringModel("");
+    List<Property> properties = ObjectResolver.INSTANCE.getProperties(StringModel.class);
+    for (Property property : properties) {
+      support.initialize(property, new BoolQueryAttributeContextImpl());
+      BoolQueryHandler handler = support.get().get();
+      boolean flag = handler.test(builder, model);
+      Assert.assertFalse(flag);
+    }
   }
 
   public static class StringModel {

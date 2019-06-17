@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class BoolQueryAttributeContextImpl implements BoolQueryAttributeContext {
@@ -54,10 +55,21 @@ public class BoolQueryAttributeContextImpl implements BoolQueryAttributeContext 
   }
 
   @Override
-  public BeanConverterFactory getFactory() {
+  public BeanConverterFactory getBeanConverterFactory() {
     if (Objects.isNull(factory)) {
       factory = new BeanConverterFactory();
     }
     return factory;
+  }
+
+  @Override
+  public void setBeanConverterFactory(BeanConverterFactory factory) {
+    this.factory = Objects.requireNonNull(factory);
+  }
+
+  @Override
+  public void setBeanConverterFactory(Supplier<BeanConverterFactory> supplier) {
+    Objects.requireNonNull(supplier);
+    this.factory = Objects.requireNonNull(supplier.get());
   }
 }

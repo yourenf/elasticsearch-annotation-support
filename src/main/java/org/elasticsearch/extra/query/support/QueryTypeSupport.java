@@ -25,7 +25,7 @@ public class QueryTypeSupport implements AnnotationSupport {
   public void initialize(Property property, BoolQueryAttributeContext context) {
     this.property = property;
     this.queryType = property.getAnnotation(QueryType.class);
-    this.converter = context.getFactory().findConverter(property.getType());
+    this.converter = context.getBeanConverterFactory().findConverter(property.getType());
 
   }
 
