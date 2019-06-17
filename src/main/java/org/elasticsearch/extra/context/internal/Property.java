@@ -30,8 +30,8 @@ public class Property {
 
   public <T extends Annotation> T getAnnotation(final Class<T> annotationCls) {
     return Optional.ofNullable(propertyDescriptor.getReadMethod().getAnnotation(annotationCls))
-            .orElseGet(()->{
-              if (Objects.isNull(field)){
+            .orElseGet(() -> {
+              if (Objects.isNull(field)) {
                 return null;
               }
               return field.getAnnotation(annotationCls);
@@ -40,6 +40,10 @@ public class Property {
 
   public Method getReadMethod() {
     return propertyDescriptor.getReadMethod();
+  }
+
+  public Method getWriteMethod() {
+    return propertyDescriptor.getWriteMethod();
   }
 
   @Override
