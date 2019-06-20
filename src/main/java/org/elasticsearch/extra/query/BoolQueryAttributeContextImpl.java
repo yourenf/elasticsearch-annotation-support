@@ -4,10 +4,7 @@ import org.elasticsearch.extra.context.internal.ObjectResolver;
 import org.elasticsearch.extra.context.internal.Property;
 import org.elasticsearch.extra.context.internal.ReflectUtil;
 import org.elasticsearch.extra.query.plugin.converter.BeanConverterFactory;
-import org.elasticsearch.extra.query.support.AnnotationSupport;
-import org.elasticsearch.extra.query.support.NestedTypeSupport;
-import org.elasticsearch.extra.query.support.QueryTypeSupport;
-import org.elasticsearch.extra.query.support.SelectTypeSupport;
+import org.elasticsearch.extra.query.support.*;
 import org.elasticsearch.extra.query.support.handler.BoolQueryHandler;
 
 import java.util.ArrayList;
@@ -40,6 +37,7 @@ public class BoolQueryAttributeContextImpl implements BoolQueryAttributeContext 
   private BoolQueryHandler createByProperty(Property property, String path) {
     List<Class<? extends AnnotationSupport>> list = new ArrayList<>(supportTypes);
     list.add(NestedTypeSupport.class);
+    list.add(ObjectTypeSupport.class);
     list.add(QueryTypeSupport.class);
     list.add(SelectTypeSupport.class);
     List<BoolQueryHandler> handlers = list.stream().map(ReflectUtil::create).map(s -> {
