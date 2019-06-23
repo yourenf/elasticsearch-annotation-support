@@ -1,7 +1,6 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.query;
 
 import org.elasticsearch.extra.context.internal.ReflectUtil;
-import org.elasticsearch.extra.query.*;
 import org.elasticsearch.extra.query.attribute.*;
 
 import java.util.ArrayList;

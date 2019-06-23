@@ -1,9 +1,6 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.index;
 
 import org.elasticsearch.extra.context.internal.ReflectUtil;
-import org.elasticsearch.extra.index.IRDocumentAttribute;
-import org.elasticsearch.extra.index.IRRoutingAttribute;
-import org.elasticsearch.extra.index.IndexRequestAttribute;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,10 @@ package org.elasticsearch.extra;
 
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.extra.index.IndexRequestConfig;
+import org.elasticsearch.extra.index.IndexRequestProvider;
+import org.elasticsearch.extra.query.SearchRequestConfig;
+import org.elasticsearch.extra.query.SearchRequestProvider;
 import org.elasticsearch.extra.query.attribute.SearchSourceBuilderAttribute;
 
 import java.util.Map;

@@ -1,8 +1,10 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.query;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchRequest;
+import org.elasticsearch.extra.query.SearchRequestConfig;
+import org.elasticsearch.extra.query.SearchRequestProvider;
 import org.elasticsearch.extra.query.annotation.NestedType;
 import org.elasticsearch.extra.query.annotation.QueryType;
 import org.elasticsearch.extra.query.annotation.SelectType;

@@ -1,9 +1,11 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.index;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.common.bytes.BytesReference;
+import org.elasticsearch.extra.index.IndexRequestConfig;
+import org.elasticsearch.extra.index.IndexRequestProvider;
 import org.junit.Assert;
 import org.junit.Test;
 

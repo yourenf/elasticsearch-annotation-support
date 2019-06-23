@@ -1,4 +1,4 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.index;
 
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;

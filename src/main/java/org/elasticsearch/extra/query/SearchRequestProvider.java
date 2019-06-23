@@ -1,7 +1,6 @@
-package org.elasticsearch.extra;
+package org.elasticsearch.extra.query;
 
 import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.extra.query.BoolQueryConverter;
 import org.elasticsearch.extra.query.attribute.SearchRequestAttribute;
 import org.elasticsearch.extra.query.attribute.SearchSourceBuilderAttribute;
 import org.elasticsearch.index.query.BoolQueryBuilder;
