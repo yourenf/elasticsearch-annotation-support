@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
-public class IndexRequestProvider<T> {
+public class IndexRequestFactory<T> {
 
   private Function<Object, String> serializer;
 
   private final List<IndexRequestAttribute> attributes;
 
-  public IndexRequestProvider(Function<Object, String> serializer, List<IndexRequestAttribute> attributes) {
+  public IndexRequestFactory(Function<Object, String> serializer,
+                             List<IndexRequestAttribute> attributes) {
     this.serializer = Objects.requireNonNull(serializer);
     this.attributes = attributes;
   }

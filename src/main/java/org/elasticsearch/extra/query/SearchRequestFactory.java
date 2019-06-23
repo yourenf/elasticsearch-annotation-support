@@ -11,13 +11,13 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Objects;
 
-public class SearchRequestProvider<T> {
-  private static final Logger log = LoggerFactory.getLogger(SearchRequestProvider.class);
+public class SearchRequestFactory<T> {
+  private static final Logger log = LoggerFactory.getLogger(SearchRequestFactory.class);
   private BoolQueryConverter converter;
   private List<SearchRequestAttribute> searchRequestAttributes;
   private List<SearchSourceBuilderAttribute> searchSourceBuilderAttributes;
 
-  public SearchRequestProvider(BoolQueryConverter converter,
+  public SearchRequestFactory(BoolQueryConverter converter,
                                List<SearchRequestAttribute> searchRequestAttributes,
                                List<SearchSourceBuilderAttribute> searchSourceBuilderAttributes) {
     this.converter = converter;

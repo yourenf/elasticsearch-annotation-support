@@ -4,8 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.common.bytes.BytesReference;
-import org.elasticsearch.extra.index.IndexRequestConfig;
-import org.elasticsearch.extra.index.IndexRequestProvider;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class IndexRequestProviderTest {
+public class IndexRequestFactoryTest {
 
   @Test
   public void create() throws IOException {
@@ -26,7 +24,7 @@ public class IndexRequestProviderTest {
         return "";
       }
     });
-    IndexRequestProvider<PModel> provider = config.createProvider(PModel.class);
+    IndexRequestFactory<PModel> provider = config.create(PModel.class);
     PModel model = new PModel("1", 2);
     IndexRequest request = provider.create(model, "ss");
     BytesReference source = request.source();

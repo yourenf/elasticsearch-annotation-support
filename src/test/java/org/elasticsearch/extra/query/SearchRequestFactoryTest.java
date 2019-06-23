@@ -3,8 +3,6 @@ package org.elasticsearch.extra.query;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.extra.query.SearchRequestConfig;
-import org.elasticsearch.extra.query.SearchRequestProvider;
 import org.elasticsearch.extra.query.annotation.NestedType;
 import org.elasticsearch.extra.query.annotation.QueryType;
 import org.elasticsearch.extra.query.annotation.SelectType;
@@ -21,12 +19,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchRequestProviderTest {
+public class SearchRequestFactoryTest {
 
   @Test
   public void create() throws IOException {
     SearchRequestConfig config = new SearchRequestConfig();
-    SearchRequestProvider<QueryModel> provider = config.create(QueryModel.class);
+    SearchRequestFactory<QueryModel> provider = config.create(QueryModel.class);
     QueryModel model = new QueryModel("1,2,3", 2);
     SearchRequest request = provider.create(model);
     SearchSourceBuilder source = request.source();

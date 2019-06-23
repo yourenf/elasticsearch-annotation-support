@@ -26,13 +26,13 @@ public class IndexRequestConfig {
     this.attributes.add(type);
   }
 
-  public <T> IndexRequestProvider<T> createProvider(Class<T> type) {
+  public <T> IndexRequestFactory<T> create(Class<T> type) {
     List<Class<? extends IndexRequestAttribute>> list = new ArrayList<>(attributes);
     List<IndexRequestAttribute> collect = list.stream()
             .map(ReflectUtil::create).collect(Collectors.toList());
     for (IndexRequestAttribute attribute : collect) {
       attribute.initialize(type);
     }
-    return new IndexRequestProvider<>(serializer, collect);
+    return new IndexRequestFactory<>(serializer, collect);
   }
 }

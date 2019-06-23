@@ -40,7 +40,7 @@ public class SearchRequestConfig {
     searchSourceBuilderAttributes.add(attribute);
   }
 
-  public <T> SearchRequestProvider<T> create(Class<T> type) {
+  public <T> SearchRequestFactory<T> create(Class<T> type) {
     if (Objects.isNull(boolQueryAttributeContext)) {
       boolQueryAttributeContext = new BoolQueryAttributeContextImpl();
     }
@@ -55,7 +55,7 @@ public class SearchRequestConfig {
             .collect(Collectors.toList());
 
     BoolQueryConverter<T> converter = boolQueryAttributeContext.create(type, "");
-    return new SearchRequestProvider(converter, collect, attributes);
+    return new SearchRequestFactory(converter, collect, attributes);
 
   }
 }
