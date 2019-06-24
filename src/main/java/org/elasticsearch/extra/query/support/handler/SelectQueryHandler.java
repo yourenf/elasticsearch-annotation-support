@@ -66,6 +66,9 @@ public class SelectQueryHandler implements BoolQueryHandler {
       if (strategy.match(strValue)) {
         String cleanValue = strategy.cleanValue(strValue);
         Object handlerValue = converter.apply(cleanValue);
+        if (Objects.isNull(handlerValue)) {
+          return false;
+        }
         return attribute.accept(boolQueryBuilder, context, handlerValue);
       }
       return false;

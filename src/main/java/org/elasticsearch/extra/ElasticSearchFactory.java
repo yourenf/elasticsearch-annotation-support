@@ -3,9 +3,9 @@ package org.elasticsearch.extra;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.extra.index.IndexRequestConfig;
-import org.elasticsearch.extra.index.IndexRequestProvider;
+import org.elasticsearch.extra.index.IndexRequestFactory;
 import org.elasticsearch.extra.query.SearchRequestConfig;
-import org.elasticsearch.extra.query.SearchRequestProvider;
+import org.elasticsearch.extra.query.SearchRequestFactory;
 import org.elasticsearch.extra.query.attribute.SearchSourceBuilderAttribute;
 
 import java.util.Map;
@@ -15,8 +15,8 @@ import java.util.concurrent.ConcurrentMap;
 
 public class ElasticSearchFactory {
 
-  private Map<Class<?>, SearchRequestProvider<?>> searchRequestProviders = new ConcurrentHashMap<>();
-  private ConcurrentMap<Class<?>, IndexRequestProvider<?>> indexRequestProviders = new ConcurrentHashMap<>();
+  private Map<Class<?>, SearchRequestFactory<?>> searchRequestProviders = new ConcurrentHashMap<>();
+  private ConcurrentMap<Class<?>, IndexRequestFactory<?>> indexRequestProviders = new ConcurrentHashMap<>();
 
   private IndexRequestConfig indexRequestConfig;
   private SearchRequestConfig searchRequestConfig;
@@ -32,7 +32,7 @@ public class ElasticSearchFactory {
   public <T> SearchRequest createSearchRequest(T entity, SearchSourceBuilderAttribute onceAttribute) {
     Objects.requireNonNull(entity, "查询参数不能为空");
     Class<?> type = entity.getClass();
-    SearchRequestProvider<T> provider = (SearchRequestProvider<T>) searchRequestProviders.computeIfAbsent(type,
+    SearchRequestFactory<T> provider = (SearchRequestFactory<T>) searchRequestProviders.computeIfAbsent(type,
             k -> searchRequestConfig.create(k));
     return provider.create(entity, onceAttribute);
   }
@@ -41,8 +41,8 @@ public class ElasticSearchFactory {
     Objects.requireNonNull(entity, "查询参数不能为空");
     Objects.requireNonNull(id, "id不能为空");
     Class<?> type = entity.getClass();
-    IndexRequestProvider<T> provider = (IndexRequestProvider<T>) indexRequestProviders.computeIfAbsent(type,
-            k -> indexRequestConfig.createProvider(k));
+    IndexRequestFactory<T> provider = (IndexRequestFactory<T>) indexRequestProviders.computeIfAbsent(type,
+            k -> indexRequestConfig.create(k));
     return provider.create(entity, id);
   }
 
