@@ -9,9 +9,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface Highlight {
-	String[] field();
+  String[] field();
 
-	String preTags() default "<em>";
+  String preTags() default "<em>";
 
-	String postTags() default "</em>";
+  String postTags() default "</em>";
 }

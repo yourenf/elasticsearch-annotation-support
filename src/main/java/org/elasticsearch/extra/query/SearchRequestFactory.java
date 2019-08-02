@@ -18,8 +18,8 @@ public class SearchRequestFactory<T> {
   private List<SearchSourceBuilderAttribute> searchSourceBuilderAttributes;
 
   public SearchRequestFactory(BoolQueryConverter converter,
-                               List<SearchRequestAttribute> searchRequestAttributes,
-                               List<SearchSourceBuilderAttribute> searchSourceBuilderAttributes) {
+                              List<SearchRequestAttribute> searchRequestAttributes,
+                              List<SearchSourceBuilderAttribute> searchSourceBuilderAttributes) {
     this.converter = converter;
     this.searchRequestAttributes = searchRequestAttributes;
     this.searchSourceBuilderAttributes = searchSourceBuilderAttributes;

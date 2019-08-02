@@ -9,11 +9,11 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface Collapse {
-	String field();
+  String field();
 
-	String innerHitsName() default "collapsed_hits";
+  String innerHitsName() default "collapsed_hits";
 
-	int innerHitsForm() default 0;
+  int innerHitsForm() default 0;
 
-	int innerHitSize() default 0;
+  int innerHitSize() default 0;
 }

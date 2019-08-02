@@ -7,11 +7,11 @@ import org.elasticsearch.index.query.QueryBuilders;
 
 public class MatchPhraseQuery implements StringQuery {
 
-	@Override
-	public boolean accept(BoolQueryBuilder boolQueryBuilder, AttributeContext context, String value) {
-		MatchPhraseQueryBuilder phraseQuery = QueryBuilders.matchPhraseQuery(context.completeField(), value)
-				.boost(context.boost());
-		boolQueryBuilder.must(phraseQuery);
-		return true;
-	}
+  @Override
+  public boolean accept(BoolQueryBuilder boolQueryBuilder, AttributeContext context, String value) {
+    MatchPhraseQueryBuilder phraseQuery = QueryBuilders.matchPhraseQuery(context.completeField(), value)
+            .boost(context.boost());
+    boolQueryBuilder.must(phraseQuery);
+    return true;
+  }
 }

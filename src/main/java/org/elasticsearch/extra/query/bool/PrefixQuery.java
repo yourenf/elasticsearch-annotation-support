@@ -7,10 +7,10 @@ import org.elasticsearch.index.query.QueryBuilders;
 
 public class PrefixQuery implements StringQuery {
 
-	@Override
-	public boolean accept(final BoolQueryBuilder boolQueryBuilder, AttributeContext context, final String value) {
-		PrefixQueryBuilder builder = QueryBuilders.prefixQuery(context.completeField(), value).boost(context.boost());
-		boolQueryBuilder.must(builder);
-		return true;
-	}
+  @Override
+  public boolean accept(final BoolQueryBuilder boolQueryBuilder, AttributeContext context, final String value) {
+    PrefixQueryBuilder builder = QueryBuilders.prefixQuery(context.completeField(), value).boost(context.boost());
+    boolQueryBuilder.must(builder);
+    return true;
+  }
 }

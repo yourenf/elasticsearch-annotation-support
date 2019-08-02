@@ -9,11 +9,11 @@ import java.util.function.Supplier;
 
 public interface AnnotationSupport extends Supplier<Optional<BoolQueryHandler>> {
 
-	void initialize(Property property, BoolQueryAttributeContext context);
+  void initialize(Property property, BoolQueryAttributeContext context);
 
-	default void setPath(String path) {
+  default void setPath(String path) {
 
-	}
+  }
 
-	Optional<BoolQueryHandler> get();
+  Optional<BoolQueryHandler> get();
 }
