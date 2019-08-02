@@ -1,7 +1,6 @@
 package org.elasticsearch.extra.query.bool;
 
 import org.elasticsearch.common.util.set.Sets;
-import org.elasticsearch.extra.ElasticSearchClient;
 import org.elasticsearch.extra.query.AttributeContext;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -9,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
-import java.util.Objects;
 import java.util.Set;
 
 /**

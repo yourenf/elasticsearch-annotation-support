@@ -3,10 +3,6 @@ package org.elasticsearch.extra.query.plugin.converter;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
-
 public class BeanConverterFactoryTest {
 
   @Test

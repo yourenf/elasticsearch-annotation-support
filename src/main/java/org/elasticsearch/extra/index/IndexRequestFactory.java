@@ -2,7 +2,6 @@ package org.elasticsearch.extra.index;
 
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.extra.index.IndexRequestAttribute;
 
 import java.util.List;
 import java.util.Objects;

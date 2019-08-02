@@ -5,8 +5,6 @@ import org.elasticsearch.extra.context.annotation.Routing;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class IRRoutingAttributeTest {
 
   @Test

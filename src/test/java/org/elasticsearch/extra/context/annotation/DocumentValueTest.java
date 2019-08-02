@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.function.UnaryOperator;
 
-import static org.junit.Assert.*;
-
 public class DocumentValueTest {
 
   @Test
@@ -36,12 +34,12 @@ public class DocumentValueTest {
     Assert.assertEquals(document.type(), documentValue.type());
   }
 
-  @Document(index = "a")
+  @Document(index = "a.txt")
   public static class DocValueRaw {
 
   }
 
-  @Document(index = "a", indexOperator = IndexOp.class)
+  @Document(index = "a.txt", indexOperator = IndexOp.class)
   public static class DocValueEdit {
 
   }

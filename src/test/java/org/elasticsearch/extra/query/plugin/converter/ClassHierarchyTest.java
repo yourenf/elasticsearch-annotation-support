@@ -3,8 +3,6 @@ package org.elasticsearch.extra.query.plugin.converter;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.List;
-
 public class ClassHierarchyTest {
 
   @Test

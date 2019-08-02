@@ -2,10 +2,7 @@ package org.elasticsearch.extra.query.support.handler;
 
 import org.elasticsearch.extra.context.internal.ReflectUtil;
 import org.elasticsearch.extra.query.BoolQueryConverter;
-import org.elasticsearch.extra.query.annotation.NestedType;
-import org.elasticsearch.extra.query.annotation.ObjectType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.NestedQueryBuilder;
 
 import java.lang.reflect.Method;
 import java.util.Objects;

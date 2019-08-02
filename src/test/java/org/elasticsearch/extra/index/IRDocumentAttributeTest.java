@@ -1,15 +1,9 @@
 package org.elasticsearch.extra.index;
 
 import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.client.IndicesClient;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.extra.ElasticSearchClient;
 import org.elasticsearch.extra.context.annotation.Document;
-import org.elasticsearch.extra.context.annotation.Routing;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class IRDocumentAttributeTest {
   @Test

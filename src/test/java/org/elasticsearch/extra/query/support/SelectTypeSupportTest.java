@@ -3,7 +3,6 @@ package org.elasticsearch.extra.query.support;
 import org.elasticsearch.extra.context.internal.ObjectResolver;
 import org.elasticsearch.extra.context.internal.Property;
 import org.elasticsearch.extra.query.BoolQueryAttributeContextImpl;
-import org.elasticsearch.extra.query.annotation.QueryType;
 import org.elasticsearch.extra.query.annotation.SelectType;
 import org.elasticsearch.extra.query.support.handler.BoolQueryHandler;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -13,7 +12,6 @@ import org.elasticsearch.index.query.TermQueryBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SelectTypeSupportTest {

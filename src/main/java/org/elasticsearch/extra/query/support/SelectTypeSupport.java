@@ -7,8 +7,8 @@ import org.elasticsearch.extra.query.AttributeContext;
 import org.elasticsearch.extra.query.BoolQueryAttributeContext;
 import org.elasticsearch.extra.query.annotation.SelectType;
 import org.elasticsearch.extra.query.bool.BoolQueryAttribute;
-import org.elasticsearch.extra.query.plugin.strategy.Strategy;
 import org.elasticsearch.extra.query.plugin.converter.Converter;
+import org.elasticsearch.extra.query.plugin.strategy.Strategy;
 import org.elasticsearch.extra.query.support.handler.BoolQueryHandler;
 import org.elasticsearch.extra.query.support.handler.SelectQueryHandler;
 
