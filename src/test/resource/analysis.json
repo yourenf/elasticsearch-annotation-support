@@ -1,0 +1,107 @@
+{
+  "analyzer": {
+    "comma_analyzer": {
+      "tokenizer": "comma_tokenizer",
+      "filter": [
+        "lowercase",
+        "trim"
+      ]
+    },
+    "slash_analyzer": {
+      "tokenizer": "slash_tokenizer",
+      "filter": [
+        "lowercase",
+        "trim"
+      ]
+    },
+    "spec_analyzer": {
+      "tokenizer": "spec_tokenizer",
+      "filter": [
+        "lowercase",
+        "trim"
+      ]
+    },
+    "full_pinyin_analyzer": {
+      "tokenizer": "full_pinyin"
+    },
+    "first_letter_pinyin_analyzer": {
+      "tokenizer": "first_letter_pinyin"
+    }
+  },
+  "tokenizer": {
+    "comma_tokenizer": {
+      "type": "simple_pattern_split",
+      "pattern": ","
+    },
+    "slash_tokenizer": {
+      "type": "simple_pattern_split",
+      "pattern": "/"
+    },
+    "spec_tokenizer": {
+      "type": "simple_pattern_split",
+      "pattern": "\\|"
+    },
+    "first_letter_pinyin": {
+      "type": "pinyin",
+      "keep_separate_first_letter": true,
+      "keep_full_pinyin": false,
+      "keep_first_letter": false,
+      "ignore_pinyin_offset": false
+    },
+    "full_pinyin": {
+      "type": "pinyin",
+      "keep_separate_first_letter": false,
+      "keep_full_pinyin": true,
+      "keep_first_letter": false,
+      "ignore_pinyin_offset": false
+    }
+  },
+  "normalizer": {
+    "filter_char_normalizer": {
+      "type": "custom",
+      "char_filter": [
+        "symbol_char_filter",
+        "space_char_filter"
+      ],
+      "filter": [
+        "lowercase",
+        "asciifolding"
+      ]
+    },
+    "no_filter_char_normalizer": {
+      "type": "custom",
+      "char_filter": [],
+      "filter": [
+        "lowercase",
+        "asciifolding"
+      ]
+    }
+  },
+  "char_filter": {
+    "symbol_char_filter": {
+      "type": "mapping",
+      "mappings": [
+        "( => ",
+        ") => ",
+        "[ => ",
+        "] => ",
+        "< => ",
+        "> => ",
+        "《 => ",
+        "》 => ",
+        "* => ",
+        "・ => ",
+        "· => ",
+        "〜 => ",
+        "~ => ",
+        "- => ",
+        ". => "
+      ]
+    },
+    "space_char_filter": {
+      "type": "pattern_replace",
+      "pattern": "\\s+",
+      "replacement": " "
+    }
+  }
+}
