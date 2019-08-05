@@ -1,7 +1,6 @@
 package org.elasticsearch.extra.context.annotation;
 
 import java.lang.annotation.*;
-import java.util.function.UnaryOperator;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
@@ -13,18 +12,6 @@ public @interface Document {
    * @return
    */
   String index();
-
-  /**
-   * 动态修改索引
-   * - input
-   * String index = "a"
-   * UnaryOperator<String> indexOperator  = (x) -> x + 1
-   * - output
-   * String index = "a1"
-   *
-   * @return
-   */
-  Class<? extends UnaryOperator<String>> indexOperator() default NoneOperator.class;
 
   String type() default "_doc";
 
