@@ -4,8 +4,6 @@ import org.elasticsearch.common.util.set.Sets;
 import org.elasticsearch.extra.query.AttributeContext;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Set;
@@ -14,7 +12,6 @@ import java.util.Set;
  * 关键字
  */
 public class TermsQuery implements BoolQueryAttribute<Object> {
-  private static final Logger log = LoggerFactory.getLogger(TermsQuery.class);
 
   private String separator = ",";
 

@@ -53,7 +53,7 @@ public class PropertyBuilder {
   }
 
   public PropertyBuilder field(String name, String type, Consumer<XContentBuilder> consumer) {
-    properties.add((builder) -> {
+    properties.add(builder -> {
       try {
         builder.startObject(name);
         builder.field("type", type);

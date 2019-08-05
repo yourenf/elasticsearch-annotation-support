@@ -34,9 +34,9 @@ public class CreateIndexRequestFactoryTest {
   public void accept() throws IOException, URISyntaxException {
     CreateIndexRequestFactory factory = new CreateIndexRequestFactory();
     byte[] bytes = Files.readAllBytes(getResource("analysis.json"));
-    factory.setAnalysis(new String(bytes), XContentType.JSON);
+    factory.setAnalysis(new String(bytes, "utf-8"), XContentType.JSON);
     byte[] bytes2 = Files.readAllBytes(getResource("mapping.json"));
-    CreateIndexRequest request = factory.create(CIRModel.class, new String(bytes2), XContentType.JSON);
+    CreateIndexRequest request = factory.create(CIRModel.class, new String(bytes2, "utf-8"), XContentType.JSON);
 
     CreateIndexRequest request2 = factory.create(CIRModel.class, () -> {
       PropertyBuilder builder = new PropertyBuilder();
