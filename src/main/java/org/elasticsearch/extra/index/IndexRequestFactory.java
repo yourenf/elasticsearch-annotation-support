@@ -21,12 +21,13 @@ public class IndexRequestFactory<T> {
 
   public IndexRequest create(T entity, String id) {
     Objects.requireNonNull(entity, "查询参数不能为空");
-    Objects.requireNonNull(id, "id不能为空");
     IndexRequest request = new IndexRequest();
     for (IndexRequestAttribute attribute : attributes) {
       attribute.accept(request, entity);
     }
-    request.id(id);
+    if (Objects.nonNull(id)) {
+      request.id(id);
+    }
     String json = serializer.apply(entity);
     request.source(json, XContentType.JSON);
     return request;

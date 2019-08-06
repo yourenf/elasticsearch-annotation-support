@@ -37,9 +37,18 @@ public class ElasticSearchFactory {
     return provider.create(entity, onceAttribute);
   }
 
+  public <T> IndexRequest createIndexRequest(T entity) {
+    return createIndexRequest(entity, null);
+  }
+
+  /**
+   * @param entity 文档
+   * @param id     文档ID
+   * @param <T>    文档类型
+   * @return IndexRequest
+   */
   public <T> IndexRequest createIndexRequest(T entity, String id) {
-    Objects.requireNonNull(entity, "查询参数不能为空");
-    Objects.requireNonNull(id, "id不能为空");
+    Objects.requireNonNull(entity, "entity 参数不能为空");
     Class<?> type = entity.getClass();
     IndexRequestFactory<T> provider = (IndexRequestFactory<T>) indexRequestProviders.computeIfAbsent(type,
             k -> indexRequestConfig.create(k));
