@@ -6,7 +6,7 @@
 
     <groupId>org.elasticsearch.extra</groupId>
     <artifactId>elasticsearch-annotation-support</artifactId>
-    <version>6.0.5</version>
+    <version>6.0.6</version>
     <packaging>jar</packaging>
     <name>elasticsearch-annotation-support</name>
     <description>ElasticSearch 工具类</description>
