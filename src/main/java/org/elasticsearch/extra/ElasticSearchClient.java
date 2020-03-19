@@ -1,6 +1,10 @@
 package org.elasticsearch.extra;
 
 import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BackoffPolicy;
 import org.elasticsearch.action.bulk.BulkProcessor;
@@ -44,7 +48,19 @@ public final class ElasticSearchClient {
   private final RestHighLevelClient client;
 
   public ElasticSearchClient(String hostname, int port) {
-    this.client = new RestHighLevelClient(RestClient.builder(new HttpHost(hostname, port)));
+    this(RestClient.builder(new HttpHost(hostname, port)));
+  }
+
+  public ElasticSearchClient(HttpHost host, String userName, String password) {
+    final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    credentialsProvider.setCredentials(AuthScope.ANY,
+            new UsernamePasswordCredentials(userName,password));
+    RestClientBuilder builder = RestClient.builder(host)
+            .setHttpClientConfigCallback(httpClientBuilder ->{
+                httpClientBuilder.disableAuthCaching();
+                return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+            });
+    this.client = new RestHighLevelClient(builder);
   }
 
   public ElasticSearchClient(RestClientBuilder builder) {
