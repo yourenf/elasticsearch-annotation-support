@@ -20,6 +20,7 @@ import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
@@ -44,6 +45,10 @@ public final class ElasticSearchClient {
 
   public ElasticSearchClient(String hostname, int port) {
     this.client = new RestHighLevelClient(RestClient.builder(new HttpHost(hostname, port)));
+  }
+
+  public ElasticSearchClient(RestClientBuilder builder) {
+    this.client = new RestHighLevelClient(builder);
   }
 
   public RestHighLevelClient get() {
