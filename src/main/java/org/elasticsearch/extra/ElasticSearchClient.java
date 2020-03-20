@@ -35,6 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -51,16 +52,23 @@ public final class ElasticSearchClient {
     this(RestClient.builder(new HttpHost(hostname, port)));
   }
 
-  public ElasticSearchClient(HttpHost host, String userName, String password) {
-    final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    credentialsProvider.setCredentials(AuthScope.ANY,
-            new UsernamePasswordCredentials(userName,password));
+  public ElasticSearchClient(HttpHost host, String username, String password) {
+    Objects.requireNonNull(username);
+    Objects.requireNonNull(password);
     RestClientBuilder builder = RestClient.builder(host)
-            .setHttpClientConfigCallback(httpClientBuilder ->{
-                httpClientBuilder.disableAuthCaching();
-                return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+            .setHttpClientConfigCallback(httpClientBuilder -> {
+              httpClientBuilder.disableAuthCaching();
+              CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+              UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(username, password);
+              credentialsProvider.setCredentials(AuthScope.ANY, credentials);
+              return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
             });
     this.client = new RestHighLevelClient(builder);
+  }
+
+  public ElasticSearchClient(String hostname, String port,
+                             String username, String password) {
+    this(new HttpHost(hostname, Integer.valueOf(port)), username, password);
   }
 
   public ElasticSearchClient(RestClientBuilder builder) {
@@ -147,6 +155,19 @@ public final class ElasticSearchClient {
     }
   }
 
+  public MultiSearchResponse msearch(MultiSearchRequest multiSearchRequest) {
+    try {
+      long begin = System.currentTimeMillis();
+      MultiSearchResponse items = client.msearch(multiSearchRequest, RequestOptions.DEFAULT);
+      long end = System.currentTimeMillis();
+      log.debug("检索 {} 条 花费 {} ms", multiSearchRequest.requests().size(), end - begin);
+      return items;
+    } catch (IOException e) {
+      throw new ElasticSearchException(e);
+    }
+  }
+
+  @Deprecated
   public MultiSearchResponse multiSearch(MultiSearchRequest multiSearchRequest) {
     try {
       long begin = System.currentTimeMillis();
